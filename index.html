@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Przygotowanie do testów sprawnościowych PSP, Policji, Wojska. Oficer Wojska - znam standardy od środka.">
+    <meta name="keywords" content="przygotowanie PSP, test policji, przygotowanie wojsko, testy sprawnościowe">
+    <title>Przygotowanie do Testów - PSP, Policja, Wojsko</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2d5016;
+            --primary-light: #3a6b47;
+            --accent: #ff6b35;
+            --dark: #1a1a1a;
+            --light: #f5f5f5;
+            --success: #4ade80;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* NAVBAR */
+        .navbar {
+            background: var(--dark);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo h1 { color: var(--accent); font-size: 1.8rem; }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-menu a:hover { color: var(--accent); }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 900;
+            line-height: 1.2;
+        }
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        .hero-credentials {
+            font-size: 0.95rem;
+            color: var(--accent);
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+        .cta-box {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 10px;
+            margin: 40px auto;
+            max-width: 500px;
+            border: 2px solid var(--accent);
+        }
+        .cta-box h3 { margin-bottom: 15px; font-size: 1.5rem; }
+        .cta-box p { margin-bottom: 10px; font-size: 0.95rem; }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+        .btn-primary:hover { background: #ff5722; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(255,107,53,0.4); }
+        .btn-outline {
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            background: transparent;
+        }
+        .btn-outline:hover { background: var(--accent); color: white; }
+
+        /* SECTIONS */
+        section {
+            padding: 80px 20px;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        /* DLACZEGO JA */
+        .why-me { background: var(--light); }
+        .why-me-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .why-me-text h3 { color: var(--primary); font-size: 1.8rem; margin-bottom: 20px; }
+        .why-me-text p { margin-bottom: 15px; font-size: 1.05rem; line-height: 1.8; }
+        .credentials-list {
+            list-style: none;
+            margin-top: 30px;
+        }
+        .credentials-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+        }
+        .credentials-list li:before {
+            content: "✓";
+            color: var(--success);
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+        .why-me-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* TESTY */
+        .tests { background: white; }
+        .tests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .test-card {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 5px solid var(--accent);
+            transition: all 0.3s;
+        }
+        .test-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .test-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        .test-card ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+        .test-card li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+        .test-card li:before {
+            content: "→";
+            color: var(--accent);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* JAK PRACUJĘ */
+        .process { background: var(--light); }
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .step {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 15px;
+        }
+        .step h3 { color: var(--primary); margin-bottom: 10px; }
+
+        /* CENNIK */
+        .pricing { background: white; }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        .price-card {
+            background: var(--light);
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #ddd;
+            transition: all 0.3s;
+            position: relative;
+        }
+        .price-card.featured {
+            border-color: var(--accent);
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255,107,53,0.3);
+        }
+        .price-card.featured .badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        .price { font-size: 2.5rem; color: var(--primary); font-weight: bold; margin: 20px 0; }
+        .price-desc { color: #666; margin-bottom: 20px; font-size: 0.95rem; }
+        .price-features {
+            list-style: none;
+            text-align: left;
+            margin: 25px 0;
+        }
+        .price-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+        }
+        .price-features li:before {
+            content: "✓";
+            color: var(--success);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        /* OPINIE */
+        .testimonials { background: var(--light); }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .testimonial {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        .stars { color: var(--accent); margin-bottom: 15px; font-size: 1.2rem; }
+        .testimonial p { margin-bottom: 15px; font-style: italic; }
+        .testimonial-author { font-weight: bold; color: var(--primary); }
+
+        /* FAQ */
+        .faq { background: white; }
+        .faq-items { max-width: 800px; margin: 0 auto; }
+        .faq-item {
+            background: var(--light);
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .faq-question {
+            padding: 20px;
+            background: var(--primary);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+        .faq-question:hover { background: var(--primary-light); }
+        .faq-answer {
+            padding: 20px;
+            display: none;
+            background: white;
+        }
+        .faq-answer.active { display: block; }
+
+        /* KONTAKT */
+        .contact { background: var(--primary); color: white; }
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        .contact-method {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+        .contact-method h3 { margin-bottom: 10px; }
+        .contact-method p { margin-bottom: 15px; opacity: 0.9; }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2rem; }
+            .why-me-content { grid-template-columns: 1fr; }
+            .nav-menu { gap: 15px; font-size: 0.9rem; }
+            .price-card.featured { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo"><h1>Przygotowanie do Służb</h1></div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Start</a></li>
+                    <li><a href="#why-me">O mnie</a></li>
+                    <li><a href="#tests">Testy</a></li>
+                    <li><a href="#pricing">Cennik</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Zdaj testy sprawnościowe za pierwszym razem</h1>
+                <p class="hero-credentials">Oficer Wojska Polskiego • Znam standardy od środka</p>
+                <p class="hero-subtitle">Nie chodzi o to jak dużo możesz zrobić. Chodzi o to że musisz zdać. Ja Cię do tego przygotowuję.</p>
+                
+                <div class="cta-box">
+                    <h3>🎯 Bezpłatna Konsultacja</h3>
+                    <p><strong>Sprawdzę czy jesteś gotowy na test</strong></p>
+                    <p>Ocena stanu fizycznego + plan działania</p>
+                    <p style="margin-top: 20px;">
+                        <a href="https://wa.me/48503975998?text=Cześć%20Damian,%20chcę%20przygotowanie%20do%20testów%20służb" class="btn btn-primary" target="_blank">
+                            Rezerwuję konsultację
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DLACZEGO JA -->
+    <section id="why-me" class="why-me">
+        <div class="container">
+            <div class="section-header">
+                <h2>Dlaczego Akurat Ja?</h2>
+                <p>Nie jestem zwykłym trenerem osobistym</p>
+            </div>
+
+            <div class="why-me-content">
+                <div class="why-me-text">
+                    <h3>Oficer. Znam test od środka.</h3>
+                    <p><strong>Przeszedłem przez to wszystko czego uczę.</strong></p>
+                    <p>Wiem jak pracuje psychika pod presją. Wiem jakie mięśnie potrzebujesz trenować. Wiem gdzie ludzie zawodzą i jak tego uniknąć.</p>
+                    
+                    <ul class="credentials-list">
+                        <li>Magister Wychowania Fizycznego (AWF Warszawa)</li>
+                        <li>Fizjoterapia w Sporcie (studia podyplomowe)</li>
+                        <li>Oficer Wyższej Szkoły Oficerskiej</li>
+                        <li>Psychologia Sportu i Trening Mentalny</li>
+                        <li>30+ lat doświadczenia w sporcie</li>
+                    </ul>
+                </div>
+                <div class="why-me-image">
+                    <img src="img/damian-hero2.jpg" alt="Damian Krawiec - Przygotowanie do Służb">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTY -->
+    <section id="tests" class="tests">
+        <div class="container">
+            <div class="section-header">
+                <h2>Co Cię Czeka Na Testach?</h2>
+                <p>Znamy dokładnie co testują</p>
+            </div>
+
+            <div class="tests-grid">
+                <div class="test-card">
+                    <h3>🚒 Straż Pożarna (PSP)</h3>
+                    <ul>
+                        <li>Bieg 2.4 km (Cooper Test)</li>
+                        <li>Testy siły (pompki, wznosy)</li>
+                        <li>Wytrzymałość w ciągu 4 godzin</li>
+                        <li>Przepaść po przeszkodach</li>
+                        <li>Przenoszenie manekina</li>
+                    </ul>
+                </div>
+
+                <div class="test-card">
+                    <h3>🚓 Policja</h3>
+                    <ul>
+                        <li>Cooper Test (bieg)</li>
+                        <li>Sprawdzian dynamiki (pompki)</li>
+                        <li>Testy gibkości</li>
+                        <li>Siła mięśni brzucha</li>
+                        <li>Testy psychologiczne</li>
+                    </ul>
+                </div>
+
+                <div class="test-card">
+                    <h3>⚔️ Wojsko</h3>
+                    <ul>
+                        <li>Marsz z obciążeniem</li>
+                        <li>Przeszkody taktyczne</li>
+                        <li>Wspinaczka po linie</li>
+                        <li>Testy unazkości (COOPER 2.4km)</li>
+                        <li>Wytrzymałość psychiczna</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JAK PRACUJĘ -->
+    <section id="process" class="process">
+        <div class="container">
+            <div class="section-header">
+                <h2>Jak Cię Przygotowuję</h2>
+                <p>Proces który działa</p>
+            </div>
+
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Badanie</h3>
+                    <p>Oceniam Twój aktualny stan fizyczny i określam słabe punkty</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Plan</h3>
+                    <p>Tworzę spersonalizowany plan treningowy na podstawie Twoich potrzeb</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Trening</h3>
+                    <p>Trenujemy specyficznie na testy - konkretne ćwiczenia, konkretne wyniki</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Weryfikacja</h3>
+                    <p>Testujemy pod warunkami testów - wiesz dokładnie co Cię czeka</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CENNIK -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Pakiety Treningowe</h2>
+                <p>Wybierz opcję która Ci odpowiada</p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3>Start</h3>
+                    <div class="price">150 PLN</div>
+                    <p class="price-desc">Jednorazowa konsultacja</p>
+                    <ul class="price-features">
+                        <li>Badanie wstępne (60 min)</li>
+                        <li>Ocena stanu fizycznego</li>
+                        <li>Plan działania</li>
+                    </ul>
+                    <a href="https://wa.me/48503975998?text=Chciałbym%20pakiet%20Start" class="btn btn-outline" target="_blank">Wybierz</a>
+                </div>
+
+                <div class="price-card featured">
+                    <div class="badge">POLECANY</div>
+                    <h3>Przygotowanie</h3>
+                    <div class="price">2500 PLN</div>
+                    <p class="price-desc">8 tygodni (16 sesji)</p>
+                    <ul class="price-features">
+                        <li>Treningi 2x tygodniowo (60 min)</li>
+                        <li>Badanie wstępne + końcowe</li>
+                        <li>Plan domowy (codziennie)</li>
+                        <li>Wsparcie via WhatsApp</li>
+                        <li>Test próbny</li>
+                    </ul>
+                    <a href="https://wa.me/48503975998?text=Chciałbym%20pakiet%20Przygotowanie" class="btn btn-primary" target="_blank">Zarezerwuj</a>
+                </div>
+
+                <div class="price-card">
+                    <h3>Intensywny</h3>
+                    <div class="price">2000 PLN</div>
+                    <p class="price-desc">4 tygodnie (12 sesji)</p>
+                    <ul class="price-features">
+                        <li>Treningi 3x tygodniowo (60 min)</li>
+                        <li>Intensywne przygotowanie</li>
+                        <li>Test próbny</li>
+                        <li>Wsparcie mentalne</li>
+                    </ul>
+                    <a href="https://wa.me/48503975998?text=Chciałbym%20pakiet%20Intensywny" class="btn btn-outline" target="_blank">Wybierz</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OPINIE -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Success Stories</h2>
+                <p>Ludzie którzy zdali dzięki przygotowaniu</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>"Myślałem że nie dam rady. Damian pokazał mi że mogę. Zdałem PSP za pierwszym razem!"</p>
+                    <p class="testimonial-author">Piotr, 26 lat - Straż Pożarna</p>
+                </div>
+
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>"Konkretnie, bez bzdur. Wiem dokładnie co robić. Po 8 tygodniach zdałem Cooper Test z pierwszej próby."</p>
+                    <p class="testimonial-author">Marcin, 28 lat - Policja</p>
+                </div>
+
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>"Najlepsze doświadczenie treningowe. Damian zna dokładnie co testują. Rekomenduje każdemu!"</p>
+                    <p class="testimonial-author">Jakub, 24 lat - Kandydat do Wojska</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Często Zadawane Pytania</h2>
+            </div>
+
+            <div class="faq-items">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">
+                        <span>Ile czasu potrzebuję na przygotowanie?</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Zależy od Twojego aktualnego stanu. Jeśli jesteś początkujący - 8-12 tygodni. Jeśli masz już bazę - 4-6 tygodni. Ocenię Cię na konsultacji.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">
+                        <span>Czy dam radę jeśli nigdy nie trenowałem?</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Tak. Przygotowuję ludzi z różnych poziomów. Liczy się konsekwencja i wola. Ja pokażę jak. Ty musisz robić.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">
+                        <span>Jakie są godziny treningów?</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Elastyczne. Ustalamy razem co Ci pasuje. Mogę trenować rano, wieczorem, weekendy - zależy od Ciebie.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">
+                        <span>Czy oferty są elastyczne?</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Tak. Mogę dostosować pakiet do Twoich potrzeb. Skontaktuj się - omówimy.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('active')">
+                        <span>Jakie są szanse na zdanie po przygotowaniu?</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Bardzo wysokie jeśli będziesz systematyczny. Większość moich klientów zdaje za pierwszym razem. Ale potrzebujesz Twojego wysiłku.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header" style="color: white;">
+                <h2 style="color: white;">Zaczniemy?</h2>
+                <p style="color: rgba(255,255,255,0.8);">Kontaktuj się - omówimy Twoje cele</p>
+            </div>
+
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                    <h3>WhatsApp</h3>
+                    <p>Najszybciej odpowiadam tutaj</p>
+                    <a href="https://wa.me/48503975998?text=Cześć%20Damian,%20chciałbym%20przygotowanie%20do%20testów%20służb" class="btn btn-primary" target="_blank">Napisz</a>
+                </div>
+
+                <div class="contact-method">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <h3>Telefon</h3>
+                    <p>503 975 998</p>
+                    <a href="tel:503975998" class="btn btn-primary">Zadzwoń</a>
+                </div>
+
+                <div class="contact-method">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h3>Lokalizacja</h3>
+                    <p>Praczę Duże<br>Tarczyn</p>
+                    <a href="https://maps.google.com/?q=Praczę+Duże" class="btn btn-primary" target="_blank">Mapa</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2025 Damian Krawiec - Przygotowanie do Testów Służb Mundurowych</p>
+        <p>Oficer Wojska Polskiego • Specjalista Przygotowania Fizycznego</p>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.style.cursor = 'pointer';
+            });
+        });
+    </script>
+</body>
+</html>
