@@ -7,655 +7,757 @@
     <meta name="keywords" content="trener personalny, fizjoterapia, Praczę Duże, Tarczyn, służby mundurowe, kandydaci PSP">
     <meta name="author" content="Damian Krawiec">
     <title>Studio Las - Trener Personalny & Fizjoterapia</title>
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- STYLE WBUDOWANY -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2d5016;
+            --secondary-color: #3a6b47;
+            --accent-color: #4ade80;
+            --dark-bg: #1a1a1a;
+            --light-bg: #f8f9fa;
+            --text-dark: #2c3e50;
+            --text-light: #6c757d;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* NAVIGATION */
+        .navbar {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 4rem 2rem;
+        }
+
+        .hero-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-content {
+            color: var(--white);
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-credentials {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .waitlist-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            color: var(--text-dark);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .waitlist-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .waitlist-benefits {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .waitlist-benefits li {
+            padding: 0.5rem 0;
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-cta {
+            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+            color: var(--white);
+            font-size: 1.1rem;
+            padding: 1.2rem 2.5rem;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(74, 222, 128, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        /* ABOUT */
+        .about {
+            background: var(--light-bg);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .qualifications ul {
+            list-style: none;
+        }
+
+        .qualifications li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .qualifications i {
+            color: var(--accent-color);
+            margin-right: 0.5rem;
+        }
+
+        /* SPECS */
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .spec-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .spec-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .spec-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .spec-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .testimonial-quote {
+            font-style: italic;
+            color: var(--text-light);
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--light-bg);
+            border-radius: 8px;
+        }
+
+        /* PRICING */
+        .pricing {
+            background: var(--light-bg);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .price-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .price-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .price-card.featured {
+            border: 3px solid var(--accent-color);
+            transform: scale(1.05);
+        }
+
+        .badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-per {
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+
+        .price-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .price-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .price-features i {
+            color: var(--accent-color);
+            margin-right: 0.5rem;
+        }
+
+        .pricing-note {
+            text-align: center;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 10px;
+        }
+
+        /* PROCESS */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* TESTIMONIALS */
+        .testimonials {
+            background: var(--light-bg);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .stars {
+            color: #fbbf24;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-top: 1rem;
+        }
+
+        /* CERTIFICATIONS */
+        .certifications-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cert-highlights {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .cert-list {
+            list-style: none;
+        }
+
+        .cert-list li {
+            padding: 1rem 0;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 1.1rem;
+        }
+
+        .cert-list i {
+            color: var(--accent-color);
+            margin-right: 1rem;
+        }
+
+        .cert-cta {
+            text-align: center;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        /* FAQ */
+        .faq {
+            background: var(--light-bg);
+        }
+
+        .faq-items {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: var(--light-bg);
+        }
+
+        .faq-question h3 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .faq-question i {
+            color: var(--primary-color);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s, padding 0.3s;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        /* CONTACT */
+        .contact-wrapper {
+            display: grid;
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-method {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-method h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-form h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--dark-bg);
+            color: var(--white);
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            padding: 0.5rem 0;
+        }
+
+        .footer-section ul li a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: var(--white);
+                width: 100%;
+                padding: 2rem;
+                box-shadow: var(--shadow-lg);
+                transition: left 0.3s;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .hero-split {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .price-card.featured {
+                transform: scale(1);
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- NAWIGACJA -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-wrapper">
-                <div class="logo">
-                    <h2>Studio Las</h2>
-                </div>
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="#home">Start</a></li>
-                    <li><a href="#about">O mnie</a></li>
-                    <li><a href="#specializations">Specjalizacje</a></li>
-                    <li><a href="#pricing">Cennik</a></li>
-                    <li><a href="#certifications">Certyfikaty</a></li>
-                    <li><a href="#process">Jak to działa</a></li>
-                    <li><a href="#testimonials">Opinie</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#contact">Kontakt</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    [... cała reszta Twojego kodu HTML bez zmian ...]
 
-    <!-- HERO SECTION -->
-    <section id="home" class="hero" style="background: linear-gradient(rgba(45, 80, 22, 0.85), rgba(58, 107, 71, 0.85)), url('img/studio-exterior.jpg') center/cover no-repeat;">
-        <div class="hero-split">
-            <div class="hero-image-container">
-                <img src="img/damian-hero2.jpg" alt="Damian Krawiec - Trener Personalny" class="hero-image">
-            </div>
-            <div class="hero-content">
-                <h1>Powrót do sprawności zamiast bólu</h1>
+    <!-- SCRIPTS WBUDOWANE -->
+    <script>
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const isActive = faqItem.classList.contains('active');
                 
-                <p class="hero-credentials">
-                    <strong>Oficer Wojska Polskiego • Absolwent AWF • Specjalista Fizjoterapii w Sporcie</strong>
-                </p>
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
                 
-                <p class="hero-location">📍 Praczę Duże (10 min od Piaseczna) • Studio w sercu lasu</p>
-                
-                <p class="hero-subtitle">
-                    Pracowałem na siłowniach i klubach fitness.<br>
-                    Teraz zakładam Studio Las.<br>
-                    <strong>Dlaczego? Bo chcę treningi robić po mojemu - bez kompromisów.</strong>
-                </p>
-                
-                <!-- CTA BOX -->
-                <div class="waitlist-box">
-                    <p class="waitlist-title">📋 Darmowa konsultacja diagnostyczna</p>
-                    <p class="waitlist-subtitle">Bez zobowiązań. 30 minut analizy Twojego stanu:</p>
-                    <ul class="waitlist-benefits">
-                        <li>✅ Badanie składu ciała (Tanita RD-545)</li>
-                        <li>✅ Test funkcjonalny i analiza postawy</li>
-                        <li>✅ Spersonalizowany plan treningowy</li>
-                    </ul>
-                    <p class="waitlist-spots" style="color: #4ade80; font-weight: bold;">⏰ 5 miejsc dostępnych w tym miesiącu</p>
-                    <a href="https://wa.me/48503975998?text=Cześć%20Damian,%20chcę%20umówić%20się%20na%20darmową%20konsultację" class="btn btn-cta" target="_blank">Rezerwuję konsultację</a>
-                </div>
-            </div>
-        </div>
-    </section>
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
 
-    <!-- O MNIE -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <h2>Kim jestem?</h2>
-                <p>Oficer, trener, specjalista - Twój partner w drodze do zdrowia</p>
-            </div>
-            
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="img/damian-about.jpg" alt="Damian Krawiec - Trener Personalny i Fizjoterapeuta">
-                </div>
-                
-                <div class="about-text">
-                    <h3>Nie jestem "typowym" trenerem</h3>
-                    
-                    <p><strong>Absolwent Akademii Wychowania Fizycznego Józefa Piłsudskiego (magister).</strong><br>
-                    Absolwent Wyższej Szkoły Oficerskiej Wojsk Lądowych.<br>
-                    Absolwent Wyższej Szkoły Zarządzania Personelem (licencjat).<br>
-                    Specjalista ds. Fizjoterapii w Sporcie (studia podyplomowe).</p>
-                    
-                    <p>Pracowałem na siłowniach i klubach fitness.<br>
-                    Teraz zakładam Studio Las.<br>
-                    <strong>Dlaczego? Bo chcę treningi robić po mojemu - bez kompromisów.</strong></p>
-                    
-                    <p>Współpracuję z Wojskowym Instytutem Medycyny Lotniczej.<br>
-                    Jestem opiekunem sportowym podchorążych S3WAT (Sekcja Spadochronowa Wojskowej Akademii Technicznej).</p>
-                    
-                    <div style="background: #f0f9ff; border-left: 4px solid #0066FF; padding: 20px; margin: 30px 0; border-radius: 8px;">
-                        <p style="margin: 0; font-size: 0.95rem; line-height: 1.7;">
-                            <strong>💡 Co to oznacza dla Ciebie?</strong><br><br>
-                            Szkolę się w psychologii sportu i treningu mentalnym.<br>
-                            Bo ciało słucha mózgu. A mózg słuchać woli kogoś, kto wie co mówi.<br><br>
-                            Rozumiem jak ciało reaguje na stres i zmęczenie.<br>
-                            To pomaga mi trenować Cię bezpiecznie - niezależnie czy chodzi o powrót po urazu, 
-                            po ciąży czy po latach bez treningu.
-                        </p>
-                    </div>
-                    
-                    <div style="background: #fef3c7; border-left: 4px solid #FFB800; padding: 20px; margin: 30px 0; border-radius: 8px;">
-                        <p style="margin: 0; font-size: 0.95rem; line-height: 1.7;">
-                            <strong>🏡 Studio Las jest celowo kameralne.</strong><br><br>
-                            Treningi poza social mediami.<br>
-                            Twoja prywatność to mój priorytet.<br>
-                            Tu trenujesz dla siebie, nie dla followerów.
-                        </p>
-                    </div>
-
-                    <div class="qualifications">
-                        <h4>Edukacja i szkolenia:</h4>
-                        <ul>
-                            <li><i class="fas fa-graduation-cap"></i> Magister Wychowania Fizycznego (AWF Warszawa)</li>
-                            <li><i class="fas fa-graduation-cap"></i> Fizjoterapia w Sporcie (studia podyplomowe)</li>
-                            <li><i class="fas fa-graduation-cap"></i> Wyższa Szkoła Oficerska Wojsk Lądowych</li>
-                            <li><i class="fas fa-certificate"></i> Psychologia Sportu i Trening Mentalny</li>
-                            <li><i class="fas fa-certificate"></i> 30+ certyfikatów z treningu funkcjonalnego</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SPECJALIZACJE -->
-    <section id="specializations" class="specializations">
-        <div class="container">
-            <div class="section-header">
-                <h2>Moje Specjalizacje</h2>
-                <p>Pracuję z różnymi grupami - od rekonwalescencji po służby mundurowe</p>
-            </div>
-
-            <div class="specs-grid">
-                <div class="spec-card">
-                    <div class="spec-icon">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <h3>Po urazach i operacjach</h3>
-                    <p>Wiem jak odbudować ciało bezpiecznie. To moja główna specjalizacja.</p>
-                    <p class="testimonial-quote">"Pomocny trener, zrozumiał moje ograniczenia po kontuzji"</p>
-                </div>
-
-                <div class="spec-card">
-                    <div class="spec-icon">
-                        <i class="fas fa-child"></i>
-                    </div>
-                    <h3>Kobiety w ciąży i po porodzie</h3>
-                    <p>Każda kobieta zasługuje na treningi bezpieczne i efektywne. Ja wiem jak to zrobić.</p>
-                    <p class="testimonial-quote">"Czułam się bezpiecznie, a efekty były widoczne"</p>
-                </div>
-
-                <div class="spec-card">
-                    <div class="spec-icon">
-                        <i class="fas fa-dumbbell"></i>
-                    </div>
-                    <h3>Osoby 40+</h3>
-                    <p>Wiem jak ciało się zmienia z wiekiem. Siła, elastyczność, regeneracja - wszystko działa inaczej. Mam program specjalnie na to.</p>
-                    <p class="testimonial-quote">"Nigdy nie myślałem że mogę trenować, jestem zachwycony"</p>
-                </div>
-
-                <div class="spec-card">
-                    <div class="spec-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Kandydaci do służb mundurowych</h3>
-                    <p>Przygotowuję kandydatów do PSP, Policji, Wojska na testy sprawnościowe. Znam standardy. Wiem jak Cię przygotować żeby zdać.</p>
-                    <p class="testimonial-quote">"Zdałem test PSP za pierwszym razem dzięki Damianowi"</p>
-                </div>
-            </div>
-        </div>
-    </section>
-<!-- NEUROTYPING SECTION -->
-<section id="neurotyping" class="neurotyping" style="background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%); padding: 80px 20px;">
-    <div class="container">
-        <div class="section-header">
-            <h2>Trening dopasowany do Twojego mózgu, nie tylko ciała</h2>
-            <p>Neurotyping — zaawansowana metoda personalizacji treningu</p>
-        </div>
-
-        <div style="max-width: 900px; margin: 0 auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.07);">
-            
-            <h3 style="color: #1f2937; margin-bottom: 20px;">Nie każdy powinien trenować tak samo</h3>
-
-            <p style="font-size: 1.05rem; line-height: 1.8; color: #374151; margin-bottom: 30px;">
-                Twój mózg preferuje określony typ treningu.<br>
-                <strong>A kiedy trenujesz wbrew swojej naturze biologicznej — zawsze czujesz że "to nie dla mnie".</strong>
-            </p>
-
-            <h4 style="color: #1f2937; margin-top: 30px; margin-bottom: 15px;">💡 Jak to działa?</h4>
-
-            <p style="font-size: 1rem; line-height: 1.7; color: #374151; margin-bottom: 20px;">
-                Na podstawie ankiety przedtreningowej oceniam Twój <strong>neurotyp</strong> — unikalny profil biologiczny Twojego mózgu:
-            </p>
-
-            <ul style="list-style: none; padding: 0; margin-bottom: 30px;">
-                <li style="padding: 12px 0; color: #374151; border-bottom: 1px solid #e5e7eb;">
-                    <strong>✓ Czy preferujesz wybuchy energii</strong> (ciężkie serie, niskie powtórzenia)
- 
-                    <strong>czy stały napęd?</strong> (wiele powtórzeń, wysokie objętości)
-                </li>
-                <li style="padding: 12px 0; color: #374151; border-bottom: 1px solid #e5e7eb;">
-                    <strong>✓ Czy lubisz szybkie zwycięstwa</strong> (być silnym na siłowni) 
-                    <strong>czy stopniowy progres?</strong> (cierpliwe budowanie)
-                </li>
-                <li style="padding: 12px 0; color: #374151; border-bottom: 1px solid #e5e7eb;">
-                    <strong>✓ Jak często potrzebujesz zmian?</strong> Co tydzień, co miesiąc, czy stabilny plan przez 8 tygodni?
-                </li>
-                <li style="padding: 12px 0; color: #374151;">
-                    <strong>✓ Jakie są Twoje naturalne skłonności?</strong> (impulsy, zdyscyplinowanie, eksploracja vs. rutyna)
-                </li>
-            </ul>
-
-            <div style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); padding: 20px; border-radius: 8px; margin-bottom: 30px; border-left: 4px solid #0284c7;">
-                <h4 style="color: #0c4a6e; margin-top: 0;">Rezultat? Trening który:</h4>
-                <ul style="list-style: none; padding: 0; margin: 0; color: #0c4a6e;">
-                    <li style="padding: 8px 0;"><strong>✓ Daje lepsze rezultaty</strong> — bo współpracuje z Twoją biologią, nie przeciwko niej</li>
-                    <li style="padding: 8px 0;"><strong>✓ Jest przyjemny</strong> — bo odpowiada temu czego Twój mózg naturalnie potrzebuje</li>
-                    <li style="padding: 8px 0;"><strong>✓ Trzyma Cię w grze na lata</strong> — bez walki z własną naturą</li>
-                </ul>
-            </div>
-
-            <h4 style="color: #1f2937; margin-bottom: 15px;">🧠 Czy to rzeczywista nauka?</h4>
-
-            <p style="font-size: 0.95rem; line-height: 1.7; color: #4b5563; margin-bottom: 20px;">
-                <strong>Absolutnie.</strong> Neurotyping bazuje na badaniach psychiatry Dr. Roberta Cloningera nad neurotransmiterami i osobowością.
-                Został zaadaptowany do treningu przez <strong>Christiana Thibaudeau</strong>, jednego z najbardziej szanowanych specjalistów do strength trainingu na świecie.
-            </p>
-
-            <p style="font-size: 0.95rem; line-height: 1.7; color: #4b5563; margin-bottom: 20px;">
-                <strong>Efekty w praktyce:</strong> Od 2 lat stosuję neurotyping. Okazało się — 80% osób które mówiły "trening to nie dla mnie" 
-                po prostu trenowały wbrew swojemu neurotypowi. Kiedy zmieniliśmy podejście = nagle to było dla nich.
-            </p>
-
-            <div style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); padding: 20px; border-radius: 8px; border-left: 4px solid #16a34a;">
-                <p style="margin: 0; color: #166534;">
-                    <strong>Chcesz wiedzieć jaki jest Twój neurotyp?</strong><br>
-                    Wypełnij ankietę przedtreningową poniżej. Zajmie Ci to 10-15 minut, 
-                    ale ten czas zwróci się wielokrotnie w postaci lepiej dopasowanego, bardziej efektywnego treningu.
-                </p>
-            </div>
-
-        </div>
-
-        <!-- QUESTIONNAIRE CTA -->
-        <div style="text-align: center; margin-top: 40px;">
-            <a href="https://docs.google.com/forms/..." class="btn btn-primary" style="font-size: 1.1rem; padding: 15px 40px;">
-                📋 Wypełnij ankietę neurotypingu
-            </a>
-            <p style="font-size: 0.9rem; color: #6b7280; margin-top: 15px;">
-                (10-15 minut, bez zobowiązań)
-            </p>
-        </div>
-
-    </div>
-</section>
-
-    <!-- CENNIK -->
-    <section id="pricing" class="pricing">
-        <div class="container">
-            <div class="section-header">
-                <h2>Pakiety Treningowe</h2>
-                <p>Elastyczne opcje dopasowane do Twoich potrzeb</p>
-            </div>
-
-            <div class="pricing-grid">
-                <div class="price-card">
-                    <h3>Sesja Pojedyncza</h3>
-                    <div class="price">150 PLN</div>
-                    <p class="price-desc">1 sesja treningowa</p>
-                    <ul class="price-features">
-                        <li><i class="fas fa-check"></i> Trening 1-na-1 (60 min)</li>
-                        <li><i class="fas fa-check"></i> Badanie składu ciała (Tanita)</li>
-                        <li><i class="fas fa-check"></i> Test funkcjonalny</li>
-                        <li><i class="fas fa-check"></i> Plan treningowy</li>
-                    </ul>
-                    <a href="https://wa.me/48503975998?text=Chciałbym%20zapisać%20się%20na%20sesję%20pojedynczą" class="btn btn-outline" target="_blank">Zainteresuj mnie</a>
-                </div>
-
-                <div class="price-card featured">
-                    <div class="badge">Polecany</div>
-                    <h3>Pakiet 10 Sesji</h3>
-                    <div class="price">1300 PLN <span class="price-per">130/sesja</span></div>
-                    <p class="price-desc">Stawka 130 PLN per sesja</p>
-                    <ul class="price-features">
-                        <li><i class="fas fa-check"></i> Treningi 1-na-1 (60 min)</li>
-                        <li><i class="fas fa-check"></i> Badanie składu ciała</li>
-                        <li><i class="fas fa-check"></i> Elastyczne godziny</li>
-                        <li><i class="fas fa-check"></i> Dostosowany plan</li>
-                        <li><i class="fas fa-check"></i> Zaoszczędzisz 200 PLN</li>
-                    </ul>
-                    <a href="https://wa.me/48503975998?text=Chciałbym%20kupić%20pakiet%2010%20sesji" class="btn btn-primary" target="_blank">Kup teraz</a>
-                </div>
-
-                <div class="price-card">
-                    <h3>Sesja w Parze (1-na-2)</h3>
-                    <div class="price">200 PLN</div>
-                    <p class="price-desc">Na osobę, od otwarcia studio</p>
-                    <ul class="price-features">
-                        <li><i class="fas fa-check"></i> Trening 1-na-2 (60 min)</li>
-                        <li><i class="fas fa-check"></i> Wspólne cele treningowe</li>
-                        <li><i class="fas fa-check"></i> Motywacja i wspólnota</li>
-                        <li><i class="fas fa-check"></i> Elastyczne godziny</li>
-                    </ul>
-                    <a href="https://wa.me/48503975998?text=Jestem%20zainteresowany%20treningami%201-na-2" class="btn btn-outline" target="_blank">Zapytaj o dostępność</a>
-                </div>
-            </div>
-
-            <div class="pricing-note">
-                <p><strong>Studio otwarte:</strong> Poniedziałek - Piątek, 17:00 - 22:00</p>
-                <p><strong>Godziny można negocjować</strong> w zależności od dostępności</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- JAK TO DZIAŁA -->
-    <section id="process" class="process">
-        <div class="container">
-            <div class="section-header">
-                <h2>Jak Pracuję</h2>
-                <p>Prosty i przejrzysty proces</p>
-            </div>
-
-            <div class="process-steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Pierwszy Kontakt</h3>
-                    <p>Skontaktuj się poprzez WhatsApp, email lub formularz. Powiem Ci wszystko o ofercie.</p>
-                </div>
-
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Formularz Diagnostyczny</h3>
-                    <p>Otrzymasz formularz do wypełnienia - poznam więcej o Tobie, Twoim zdrowiu i celach.</p>
-                </div>
-
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Badanie Wstępne</h3>
-                    <p>Badanie składu ciała (Tanita RD-545), test funkcjonalny i rozmowa szczegółowa.</p>
-                </div>
-
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3>Plan Treningowy</h3>
-                    <p>Na bazie badań tworzę spersonalizowany plan dostosowany do Twoich potrzeb i możliwości.</p>
-                </div>
-
-                <div class="step">
-                    <div class="step-number">5</div>
-                    <h3>Regularne Treningi</h3>
-                    <p>Trenujemy systematycznie, kontroluję postępy, dopasowuję plan na bieżąco.</p>
-                </div>
-
-                <div class="step">
-                    <div class="step-number">6</div>
-                    <h3>Wyniki</h3>
-                    <p>Klienci wrócili do zdrowia. I tak - wyglądają lepiej. Bo zdrowe ciało = lepszy wygląd.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TESTIMONIALE -->
-    <section id="testimonials" class="testimonials">
-        <div class="container">
-            <div class="section-header">
-                <h2>Opinie Klientów</h2>
-                <p>To mówią ci, którzy trenowali ze mną</p>
-            </div>
-
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p>"Profesjonalne podejście, zrozumienie moich ograniczeń i faktycznie zadziałało. Po pół roku zamiast bólu mam siłę i energię."</p>
-                    <p class="testimonial-author">Joanna, 42 lata</p>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p>"Pracowaliśmy nad korekcją postawy po urazach. Trener wiedział dokładnie co robić, nigdy się nie bałem. Polecam!"</p>
-                    <p class="testimonial-author">Marta, 35 lat</p>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p>"Po ciąży chciałam wrócić do formy. Podejście trenera było miłe, bezpieczne i efektywne. Osiągnęłam swój cel!"</p>
-                    <p class="testimonial-author">Katarzyna, 38 lat</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CERTYFIKATY & KWALIFIKACJE -->
-    <section id="certifications" class="certifications">
-        <div class="container">
-            <div class="section-header">
-                <h2>Dlaczego mogę zaufać?</h2>
-                <p>Moja edukacja i certyfikacje</p>
-            </div>
-
-            <div class="certifications-content">
-                <div class="cert-intro">
-                    <p><strong>Edukacja formalna:</strong> Magister Wychowania Fizycznego (AWF Warszawa) + Studia podyplomowe Fizjoterapia w Sporcie + Wyższa Szkoła Oficerska Wojsk Lądowych</p>
-                    <p><strong>30+ certyfikatów</strong> z zakresu treningu funkcjonalnego, fizjoterapii, psychologii sportu, pracy z kobietami w ciąży i osobami po urazach.</p>
-                    <p style="margin-top: 20px;">Nie zbieram certyfikatów dla statusu. Każdy to konkretne narzędzie które wykorzystuję w pracy z Tobą.</p>
-                </div>
-
-                <div class="cert-highlights">
-                    <h3>Wybrane Kwalifikacje:</h3>
-                    <ul class="cert-list">
-                        <li><i class="fas fa-graduation-cap"></i> <strong>Magister Wychowania Fizycznego</strong> - AWF Warszawa</li>
-                        <li><i class="fas fa-certificate"></i> <strong>Fizjoterapia w Sporcie</strong> - Studia podyplomowe</li>
-                        <li><i class="fas fa-shield-alt"></i> <strong>Oficer Wojska Polskiego</strong> - Wyższa Szkoła Oficerska</li>
-                        <li><i class="fas fa-brain"></i> <strong>Psychologia Sportu i Trening Mentalny</strong></li>
-                        <li><i class="fas fa-dumbbell"></i> <strong>Trening Funkcjonalny</strong> - Certyfikowany Specjalista</li>
-                    </ul>
-                </div>
-
-                <div class="cert-cta">
-                    <p>Chcesz sprawdzić wszystkie moje kwalifikacje i certyfikaty?</p>
-                    <a href="https://sites.google.com/view/trener-personalny-warszawa/referencje" target="_blank" class="btn btn-primary">
-                        <i class="fas fa-file-alt"></i> Zobacz Pełną Listę Certyfikatów
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="faq">
-        <div class="container">
-            <div class="section-header">
-                <h2>Często Zadawane Pytania</h2>
-                <p>Odpowiedzi na Twoje pytania</p>
-            </div>
-
-            <div class="faq-items">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Czy potrzebuję doświadczenia w treningach?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Absolutnie nie! Pracuję z osobami na każdym poziomie - od całkowitych początkujących po zaawansowanych. Każdy program jest dostosowany do Twoich możliwości i doświadczenia.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Czy mogę trenować, jeśli mam uraz lub problemy zdrowotne?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Tak! To moja specjalizacja. Pracuję z osobami na rekonwalescencji. Przeprowadzam szczegółowe badanie i adaptuję wszystko do Twoich ograniczeń. Przed każdym treningiem pytam o Twój stan zdrowia.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Czy oferujesz treningi dla kobiet w ciąży?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Tak, to jedna z moich specjalizacji! Oferuję bezpieczne treningi dla kobiet w ciąży i kompleksowe podejście do powrotu do formy po porodzie. Każdy program jest dostosowany do aktualnego stanu ciąży.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Kiedy studio otwiera się?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Studio otwiera się <strong>koniec 2025 roku</strong>. Chciałbym się już teraz poznać z potencjalnymi klientami, odpowiadać na pytania i budować społeczność. Zapisz się do newslettera aby być na bieżąco!</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Jakie są godziny otwarcia?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Studio będzie otwarte <strong>codziennie 17:00 - 22:00</strong>. Skontaktuj się by zaproponować inne godziny - mogę zrobić wyjątek dla stałego klienta lub grupy osób.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Czy są treningi grupowe?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Na początek skupiam się na treningach indywidualnych (1-na-1). Po otwarciu planuję wprowadzić treningi w parach (1-na-2). Wszystko zależy od zapotrzebowania klientów.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- KONTAKT -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2>Skontaktuj się ze mną</h2>
-                <p>Chętnie odpowiem na Twoje pytania</p>
-            </div>
-
-            <div class="contact-wrapper">
-                <div class="contact-methods">
-                    <div class="contact-method">
-                        <div class="contact-icon">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <h3>WhatsApp</h3>
-                        <p>Najszybciej odpowiadam tutaj</p>
-                        <a href="https://wa.me/48503975998?text=Cześć%20Damian,%20chciałbym%20się%20dowiedzieć%20więcej%20o%20Twoim%20studio" target="_blank" class="btn btn-outline">Napisz wiadomość</a>
-                    </div>
-
-                    <div class="contact-method">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <h3>Telefon</h3>
-                        <p>503 975 998</p>
-                        <a href="tel:503975998" class="btn btn-outline">Zadzwoń</a>
-                    </div>
-
-                    <div class="contact-method">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <h3>Email</h3>
-                        <p>damian@trenermedyczny.pl</p>
-                        <a href="mailto:damian@trenermedyczny.pl" class="btn btn-outline">Wyślij email</a>
-                    </div>
-
-                    <div class="contact-method">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <h3>Lokalizacja</h3>
-                        <p>Praczę Duże<br>ul. Pracka 1<br>Tarczyn</p>
-                        <a href="https://maps.google.com/?q=Praczę+Duże,+Pracka+1" target="_blank" class="btn btn-outline">Mapa</a>
-                    </div>
-                </div>
-
-                <div class="contact-form">
-                    <h3>Formularz Kontaktowy</h3>
-                    <p>Chcesz więcej informacji? Wpisz swoje dane - odpowiem szybko!</p>
-                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScMH0fF5ZID6zY5PeC5Wp7xXjTf1VHND4Pert7cbUI7pRWEIQ/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Ładowanie…</iframe>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Studio Las</h4>
-                    <p>Fizjoterapia + Trening = Zdrowe Ciało</p>
-                    <p style="margin-top: 10px; font-size: 0.9rem;">Oficer Wojska Polskiego • Specjalista Fizjoterapii</p>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Szybkie Linki</h4>
-                    <ul>
-                        <li><a href="#home">Start</a></li>
-                        <li><a href="#about">O mnie</a></li>
-                        <li><a href="#pricing">Cennik</a></li>
-                        <li><a href="#contact">Kontakt</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Social Media</h4>
-                    <div class="social-icons">
-                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2025 Damian Krawiec. Wszystkie prawa zastrzeżone.</p>
-                <p>Studio otwiera się koniec 2025 roku</p>
-            </div>
-        </div>
-    </footer>
-<!-- ANKIETA CTA SECTION - DOPISZ NA STRONIE NP. PRZED FOOTEREM LUB ZA NEUROTYPING -->
-
-<section id="ankieta-cta" style="background: linear-gradient(135deg,#def7ec 0%,#f0fff4 100%); padding: 60px 0;">
-    <div class="container" style="max-width: 880px;">
-        <div style="background: #ffffff; padding: 38px 32px; border-radius: 14px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); text-align: center;">
-            <h2 style="font-size: 2.05rem; color: #176748; margin-bottom: 24px; font-weight: 700;">
-                Poznaj swój indywidualny profil treningowy
-            </h2>
-            <p style="font-size: 1.14rem; color: #215e3b; margin-bottom: 22px;">
-                Czy wiesz, że nawet niewielki zwrot w podejściu do treningu może zmienić wszystko?<br>
-                <strong>Wypełnij ankietę przedtreningową</strong> – to początek Twojej drogi do skutecznego, bezpiecznego i przyjemnego ruchu.<br>
-                Już 80% osób, które mówiły „trening to nie dla mnie”, odnalazły nową motywację dzięki lepiej dopasowanemu planowi!
-            </p>
-            <ul style="list-style: none; padding-left: 0; margin: 0 0 28px 0; color: #215e3b; text-align: left; max-width: 500px; margin-left: auto; margin-right: auto;">
-                <li style="padding: 8px 0;"><i class="fas fa-check-circle" style="color: #34d399; margin-right: 10px;"></i> Program szyty na miarę pod Twój neurotyp i styl życia</li>
-                <li style="padding: 8px 0;"><i class="fas fa-check-circle" style="color: #34d399; margin-right: 10px;"></i> Realna minimalizacja ryzyka kontuzji</li>
-                <li style="padding: 8px 0;"><i class="fas fa-check-circle" style="color: #34d399; margin-right: 10px;"></i> Efekty, których nie osiągniesz „masowym schematem”</li>
-            </ul>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScMH0fF5ZID6zY5PeC5Wp7xXjTf1VHND4Pert7cbUI7pRWEIQ/viewform?usp=sharing"
-               class="btn btn-primary"
-               style="font-size: 1.15rem; font-weight: 600; padding: 16px 46px; margin-top: 16px; border-radius: 7px; background: linear-gradient(90deg,#14b8a6 0%,#7dd3fc 100%); color: #fff; border: none; transition: background 0.2s;">
-                📋 Wypełnij ankietę diagnostyczną
-            </a>
-            <p style="margin-top: 16px; font-size: 0.98rem; color: #215e3b;">
-                Bez zobowiązań — Twoje odpowiedzi są poufne i służą wyłącznie do indywidualnej pracy z Tobą.<br>
-                <span style="color: #2b8666;">Czas wypełnienia: ok. 15 minut</span>
-            </p>
-        </div>
-    </div>
-</section>
-
-    <!-- SCRIPTS -->
-    <script src="js/main.js"></script>
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
 </body>
 </html>
